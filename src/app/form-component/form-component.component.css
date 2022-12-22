@@ -1,0 +1,28 @@
+.container{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 200px;
+    width:90%;
+}
+.container button{
+    margin-top: 15px;
+    justify-content: center;
+}
+.container .text-center .btn {
+    margin-left: 8px;
+}
+mat-form-field {
+    background-color: white;
+    padding: 40px;
+   
+}
+#distance::placeholder{
+    font-weight: light;
+    opacity:.5;
+    color:black;
+}

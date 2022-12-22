@@ -1,0 +1,108 @@
+
+
+
+
+    <mat-card-title><h3>Reservation Form</h3></mat-card-title>
+    <div class="row" id="reservo" >
+        <div class="col-12 col-lg-12">
+            <br>
+            <div class="row text-center">
+                <h2>{{busyName}}</h2>
+            </div>
+            
+            <mat-card-content>
+                <form #reserveForm="ngForm" >
+                    <h3>Email</h3>
+                    <mat-form-field appearance="outline">
+                
+                      <input matInput ngModel type="email"  [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                             placeholder="this@email.com"  id="emailUser" name="emailUser"  class="form-control">
+                     
+                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Email must be a valid email address
+                      </mat-error>
+                      <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                      </mat-error>
+        
+                     
+                    </mat-form-field>
+                    <br>
+                    <h3>Date</h3>
+                    <mat-form-field appearance="outline">
+                       
+                        
+                        <input matInput ngModel [matDatepicker]="myDate" placeholder="MM/DD/YYYY" [formControl]="dateFormControl"[errorStateMatcher]="matcher">
+                       <mat-datepicker-toggle [for]="myDate" matSuffix >
+                        <mat-datepicker #myDate></mat-datepicker>
+                       </mat-datepicker-toggle>
+                       <mat-error *ngIf="dateFormControl.hasError('required')">Date is required</mat-error>
+                      </mat-form-field>
+                      <br>
+                      <h3>Time</h3>
+                        <div class="row justify-content-left">
+                            <div class="col-3 col-lg-3">
+                                <select required ngModel name="selectedVal" id="selector2" class="form-control" #selector2="ngModel" >
+                                    <option value="00"  >00</option>
+                                    <option value="01"  >01</option>
+                                    <option value="02"  >02</option>
+                                    <option value="03"  >03</option>
+                                    <option value="04"  >04</option>
+                                    <option value="05"  >05</option>
+                                    <option value="06"  >06</option>
+                                    <option value="07"  >07</option>
+                                    <option value="08"  >08</option>
+                                    <option value="09"  >09</option>
+                                    <option value="10"  >10</option>
+                                    <option value="11"  >11</option>
+                                    <option value="12"  >12</option>
+                                    <option value="13"  >13</option>
+                                    <option value="14"  >14</option>
+                                    <option value="15"  >15</option>
+                                    <option value="16"  >16</option>
+                                    <option value="17"  >17</option>
+                                    <option value="18"  >18</option>
+                                    <option value="19"  >19</option>
+                                    <option value="20"  >20</option>
+                                    <option value="21"  >21</option>
+                                    <option value="22"  >22</option>
+                                    <option value="23"  >23</option>
+                                </select>
+                            </div>
+                            <div class="col-1 col-lg-1 padding-0">
+                                <b>:</b>
+                            </div>
+                            <div class="col-3 col-lg-3 padding-0" >
+                                <select required ngModel name="selectedVal" id="selector1" class="form-control" #selector1="ngModel" >
+                                    <option value="00"  >00</option>
+                                    <option value="15"  >15</option>
+                                    <option value="30"  >30</option>
+                                    <option value="45"  >45</option>
+                                </select>
+                            </div>
+                            <div class="col-3 col-lg-3">
+                                <mat-icon> access_time </mat-icon>
+                            </div>
+                        </div>
+                  
+                
+                        <br>
+                    
+                      <div class="row text-center">
+                        <div class="col-12 col-lg-12 align-content-center">
+                            <button *ngIf="checkReserve == true" class="btn btn-danger" (click)="saveToLocal(selector2,selector1,emailFormControl.value,dateFormControl.value,busyName)">Submit</button>
+                            <button  *ngIf="checkReserve == false" class="btn btn-primary" >Cancel Reservation</button>
+                        </div>
+                      </div>
+                      <div class="row text-right">
+                        <div class="col-12 col-lg-12 ">
+                            <button class="btn btn-dark" (click)="closeModal()">Close</button>
+                        </div>
+                      </div>
+                  </form>
+                  
+            </mat-card-content>
+        
+        </div>
+    </div>
+   

@@ -1,0 +1,18 @@
+
+  .container
+  {
+    margin-top: 40px;
+    border-radius: 25px;
+    background: white;
+  }
+  img
+  {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }

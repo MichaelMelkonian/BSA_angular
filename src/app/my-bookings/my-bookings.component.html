@@ -1,0 +1,50 @@
+<div *ngIf="bookList.length >=1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-12">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th >#</th>
+                            <th >Business Name</th>
+                            <th >Date</th>
+                            <th >Time</th>
+                            <th >Email</th>
+                            <th>_</th>
+                  
+                          </tr>
+                    </thead>
+        
+        
+        
+        
+        
+                    <tr *ngFor="let bus of bookList; index as i">
+                        
+                        <td>{{i+1}}</td>
+                        <td>{{bus.Name}}</td>
+                        <td>{{bus.Date}}</td>
+                        <td>{{bus.Time}}</td>
+                        <td>{{bus.Email}}</td>
+                        <td ><mat-icon (click)="removeReservations(bus.Name)">delete</mat-icon></td>
+                    </tr>
+                  
+        
+                  </table>
+            </div>
+        </div>
+        
+        </div>
+        
+</div>
+<div *ngIf="bookList.length < 1" id="emptyBookings">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <h1> <b>No Reservations to show</b> </h1>
+            </div>
+        </div>
+    </div> 
+  
+</div>

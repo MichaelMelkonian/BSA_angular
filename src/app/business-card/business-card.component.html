@@ -1,0 +1,252 @@
+
+<div class="container" >
+    <div class="row" *ngFor="let bus of bussClick ">
+        
+        <style>
+            #goBack
+            {
+               
+                margin-top: 50px;
+                margin-left: 50px;
+            }
+        </style>
+        <div  class="col-12 col-lg-12" (change)="getBusID(bus.id)">
+            <mat-icon id="goBack" (click)="retraceFunc()">keyboard_backspace</mat-icon>
+            <h1 id="theBusTitle" >{{bus.name}}</h1>
+        </div>
+        <mat-tab-group #tabRef mat-align-tabs="center">
+        
+            <style>
+                mat-tab-group
+                {
+                    background-color: rgb(238, 195, 3);
+                }
+            </style>
+            <mat-tab label="Business details" class="justify-content-center">
+                <ng-template matTabContent>
+             
+                    <div class="block">
+                        <div class="row">
+                            <div class="col-12 col-xl-12 col-lg-12">
+                                <div class="row text-center">
+                                    <div class="col-6 col-lg-6">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h2>Address</h2>
+                                            </div>
+                                            <div class="col-12">
+                                                <h3>{{bus.location.display_address}}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-6">
+                                            
+                                <div class="row">
+                                    <div class="col-12">
+                                       <h2>Categories</h2> 
+                                    </div>
+                                    <div class="col-12" *ngFor="let cat of bus.categories">
+                                       {{cat.title}} |
+                                     </div>
+                                </div>
+                                    </div>
+                                </div>
+        
+                                    <br><br>
+
+
+                                    <div class="row text-center">
+                                        <div class="col-6 col-lg-6">
+                                   
+                                            <div class="row">
+                                                <div class="col-12">
+                                                   <h2>Phone</h2> 
+                                                </div>
+                                                <div class="col-12 ">
+                                                    <h3 >{{bus.display_phone}} </h3> 
+                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-6">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                   <h2>Price range</h2> 
+                                                </div>
+                                                <div class="col-12 ">
+                                                    <h3 >{{bus.price}} </h3> 
+                                                 </div>
+                                            </div> 
+                              
+                                        </div>
+                                    </div>
+                                    <br><br>
+
+                                    <div class="row text-center">
+                                        <div class="col-6 col-lg-6">
+                                
+                                    <div class="row">
+                                        <div class="col-12">
+                                           <h2>Status</h2> 
+                                        </div>
+                                        <div class="col-12 ">
+                                            <h3 id="open" *ngIf="bus.is_closed==false">Open Now<style>#open{color: green}</style> </h3> 
+                                            <h3 id="close" *ngIf="bus.is_closed==true">Closed Now<style>#close{color: red}</style> </h3> 
+                                         </div>
+                                    </div>
+                                        </div>
+                                        <div class="col-6 col-lg-6">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                   <h2>Visit yelp for more</h2> 
+                                                </div>
+                                                <div class="col-12 ">
+                                                   <h3><a href="{{bus.url}}">Business Link</a></h3>
+                                                 </div>
+                                            </div>
+                              
+                                        </div>
+                                    </div>
+                    
+
+
+                            </div>
+                        </div>
+              
+
+         
+                
+                
+                      <div class="row text-center">
+                        <div class="col-12 col-lg-12 align-content-center">
+                            <button class="btn btn-danger"(click)="openModal(bus.name)" >Reserve</button>
+                        </div>
+                        <div class="col-12 col-lg-12 align-content-center">
+                         <h3> Share On: <a href="https://twitter.com/intent/tweet?text=Check%20{{bus.name}}%20on%20Yelp!%20{{bus.url}}"><img id="bird" src="https://www.edigitalagency.com.au/wp-content/uploads/Twitter-logo-png.png" alt=""> </a>  <a href=" https://www.facebook.com/share.php?u={{bus.url}}"><mat-icon>facebook</mat-icon></a>
+                            
+                         
+                            
+                     
+                           
+                          </h3>
+                          <style>
+                            #bird
+                            {
+                                height: 20px;
+                                width: 20px;
+                                object-fit: contain;
+                            }
+                          </style>
+                         
+
+
+
+                        </div>
+                      </div>
+                        
+                 <br><br>
+                 <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div *ngFor="let item of secondBus; index as i">
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                    <img src="{{item.photos[0]}}" class="d-block w-100" alt="...">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="{{item.photos[1]}}" class="d-block w-100 " alt="...">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="{{item.photos[2]}}" class="d-block w-100" alt="...">
+                                  </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon"></span>
+                                <style>.carousel-control-prev-icon{background-color:black;
+                                filter: invert(100%);}</style>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                  <span class="carousel-control-next-icon"></span>
+                                  <style>.carousel-control-next-icon{background-color:black;filter: invert(100%);}</style>
+                                
+                                </button>
+                              </div>
+                    </div>
+                 </div>
+                  
+                        <!-- <img src="{{item.photos[0]}}" alt="">
+                        <img src="{{item.photos[1]}}" alt="">
+                        <img src="{{item.photos[2]}}" alt=""> -->
+                    
+                    </div>
+
+<!--                            
+                            <google-map [options]="mapOptions">
+                                <map-marker [position]="marker.position"></map-marker>
+                             </google-map>
+                         -->
+
+                    </div>
+              
+                
+                  </ng-template>
+                  
+            </mat-tab>
+            <mat-tab label="Map location">
+                <ng-template matTabContent> 
+
+                    <div class="row justify-content-center" *ngFor="let p of secondBus">
+                        <div class="col-12 col-lg-12">
+                            <div class="my-google-map">
+                                <google-map [options]="{
+                                    center: { lat: p.coordinates.latitude, lng: p.coordinates.longitude },
+                                    zoom : 14,  
+                                    streetViewControl: true,
+                                    fullscreenControl: true,
+                                    zoomControl: true
+
+                                 }"[width]="'100%'">
+                                   <map-marker [position]="{lat:p.coordinates.latitude,lng:p.coordinates.longitude}"></map-marker>
+                                   <div class="map-container">
+                                 
+                                   </div>
+                                </google-map>
+                             </div>
+                        </div>
+                    </div>
+
+                
+                </ng-template>
+            
+            </mat-tab>
+            <mat-tab label="Reviews">
+              <ng-template matTabContent>
+                <div class="rev-container">
+                    <table *ngFor="let rev of reviewerz">
+                      
+                            <tr><b>{{rev.user.name}}</b></tr>
+                            <tr>Rating {{rev.rating}}/5</tr>
+                            <tr>{{rev.text}}</tr>
+                            <br>
+                            <tr>{{rev.time_created}}</tr>
+                        
+                        
+                    </table> 
+                </div>
+                
+              </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    
+    </div>
+    <!-- {{tabRef.selectedIndex}} -->
+<!--     
+    <div *ngFor="let some of bussClick; index as i"  >
+                    
+        <td>{{i+1}}</td>
+        <td><img src="{{some.image_url}}" alt=""></td>
+        <td>{{some.name}}</td>
+        <td>{{some.rating}}</td>
+        <td>{{((some.distance*0.000621371))}}</td>
+    </div> -->
+    

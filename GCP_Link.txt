@@ -1,0 +1,2 @@
+https://angular-a8.wl.r.appspot.com/search
+https://angular-a8.wl.r.appspot.com/search/{"keyword":"Pizza","radius":5,"categories":"food","latitude":"LA","longitude":"LA"}

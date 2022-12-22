@@ -1,0 +1,14 @@
+#emptyBookings
+{
+    text-align: center;
+    margin: auto;
+    color: red;
+    margin-top: 100px;
+}
+.container
+{
+    background-color: aliceblue;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+  }

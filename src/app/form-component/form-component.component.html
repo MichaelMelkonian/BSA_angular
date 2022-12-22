@@ -1,0 +1,97 @@
+<!-- (ngSubmit)="log(keyword,distance,selector,location,autoDetect); -->
+
+<form class="container" novalidate>
+    
+<style>
+    #keywordLabel:after {
+      content:" *";
+      color: red;
+    }
+    #categoryLabel:after {
+      content:" *";
+      color: red;
+    }
+    #locationLabel:after {
+      content:" *";
+      color: red;
+    }
+  </style>
+    <div class="form-group">
+      
+        <label id="keywordLabel" for="keyword">Keyword</label>
+        <input matInput ngModel name="keyword" #keyword="ngModel" id="keyword " type="text" class="form-control" (keyup)="autoMan(keyword.viewModel)" [matAutocomplete]="auto" required>
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of autoCompleted" [value]="option.title">
+                {{option.title}}
+                
+            </mat-option>
+        </mat-autocomplete>
+        <div class="alert alert-danger" *ngIf="keyword.touched && !keyword.valid">Keyword is required</div>
+
+    </div>
+    
+   
+        
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="form-group">
+                    <label id="distanceLabel"for="distance">Distance</label>
+                    <input  ngModel  name="keyword" #distance="ngModel"  id="distance " type="number" class="form-control" placeholder="10"required >
+                </div>
+                
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="form-group">
+                    <label id="categoryLabel"for="category">Category</label>
+                    <select required ngModel name="selectedVal" id="selector" class="form-control" #selector="ngModel" >
+                        <option value="" disabled selected>Default</option>
+                        <option value="arts">Arts and Entertainment</option>
+                        <option value="health">Health and Medical</option>
+                        <option value="hotelstravel">Hotels and Travel</option>
+                        <option value="food">Food</option>
+                        <option value="professional">Professional Services</option>
+                    </select>
+                </div>
+              
+            </div>
+           
+            
+        </div>
+     
+       
+     
+
+    <div class="form-group">
+        <label id="locationLabel" for="location">Location</label>
+        <input ngModel name="location" #location="ngModel"  id="location " type="text" class="form-control" [disabled]="disabledValue" required>
+       
+        
+    </div>
+    
+    <div class="form-group">
+        <br>
+        <input ngModel name="autoDetect" #autoDetect="ngModel"  id="autoDetect " type="checkbox" ng-model="all" (change) = detect(autoDetect)>
+        <style>
+        input #autoDetect {padding-right: 15px;}
+        </style>
+        <label for="autoDetect">Auto-Detect by Location</label>
+    </div>
+        <div class="form-group">    
+            <div class="text-center">
+                <button class="btn btn-danger"(click)="log(keyword,distance,selector,location,autoDetect);">Submit</button>
+                <button class="btn btn-primary" (click)="form.reset();" (click)="clearTable()" >Clear</button>
+            </div>
+        </div>
+        
+          
+        
+        
+  
+    </form>
+    
+    <generated-table  (cardEvent)="getBusCard($event)"  [BUSY]="businesses" [formGen]="formSubmit" *ngIf="formSubmit"> </generated-table>
+    <business-card (retrace)="goBack($event)" [reviewerz]="revPool" [secondBus]="busPool"[bussClick]="theBusCard"  *ngIf="cardSubmit"></business-card>
+   
+
+    

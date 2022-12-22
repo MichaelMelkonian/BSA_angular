@@ -1,0 +1,10 @@
+mat-card{
+    width: 50vh;
+    text-align:left;
+    border-radius: 16px;
+}
+
+mat-form-field{
+    border: black;
+    width: 100%;
+}
