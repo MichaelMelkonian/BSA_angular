@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+#Running the program steps:
+1. Open angular_a8 folder
+2. In command line typ `node server.js`
+3. Open localhost:3000
+4. Click on search to execute business search
+5. Make booking and check bookings route to see if it has executed.
